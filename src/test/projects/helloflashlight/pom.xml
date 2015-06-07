@@ -44,6 +44,36 @@
           </sdk>
         </configuration>
       </plugin>
+    
+      <plugin>
+        <groupId>io.takari.maven.plugins</groupId>
+        <artifactId>takari-lifecycle-plugin</artifactId>
+        <version>1.11.6</version>
+        <extensions>true</extensions>
+        <configuration>
+          <compilerId>jdt</compilerId>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+        <executions>
+          <execution>
+            <id>compile</id>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <skip>true</skip>
+          <skipMain>true</skipMain>
+        </configuration>
+        <extensions>true</extensions>
+      </plugin>
     </plugins>
   </build>
 
