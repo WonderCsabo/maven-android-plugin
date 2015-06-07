@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TableLayout;
 
@@ -39,24 +40,15 @@ public class HelloFlashlight extends Activity {
         table.setBackgroundColor(Color.WHITE);
 
         // hook up all the buttons with a table color change on click listener
-        redButton.setOnClickListener(OnClickChangeColor(Color.RED));
-        greenButton.setOnClickListener(OnClickChangeColor(Color.GREEN));
-        blueButton.setOnClickListener(OnClickChangeColor(Color.BLUE));
-        blackButton.setOnClickListener(OnClickChangeColor(Color.BLACK));
-        whiteButton.setOnClickListener(OnClickChangeColor(Color.WHITE));
+        redButton.setOnClickListener(createListener(Color.RED));
+        greenButton.setOnClickListener(createListener(Color.GREEN));
+        blueButton.setOnClickListener(createListener(Color.BLUE));
+        blackButton.setOnClickListener(createListener(Color.BLACK));
+        whiteButton.setOnClickListener(createListener(Color.WHITE));
+    }
+    
+    public OnClickListener createListener(final int color) {
+    	return new BackgroundChanger(table, color);
     }
 
-    /**
-     * An OnClickListener that changes the color of the table.
-     * @param color
-     * @return
-     */
-    View.OnClickListener OnClickChangeColor(final int color)
-    {
-        return new View.OnClickListener() {
-            public void onClick(View view) {
-                table.setBackgroundColor(color);
-            }
-        };
-    }
 }
